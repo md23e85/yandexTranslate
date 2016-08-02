@@ -16,7 +16,6 @@ app.set('views', __dirname);
 var request = require('request');
 var urlutils = require('url');
 
-
 var stringTranslate = '';
 app.get('/', function(req, res){
 	
@@ -29,14 +28,10 @@ app.get('/', function(req, res){
 				title: 'Введите текст для перевода:(ru->en)',
 				cookiesTest: req.cookies.remember
 			});	
-
 		
 });
 
-
 app.post('/', function(req, res){
-	
-				
 			
 	if(req.body.text !=""){
 				var url = urlutils.format({
@@ -49,9 +44,6 @@ app.post('/', function(req, res){
 				text: req.body.text
 			}		
 		});
-	
-						
-						
 		//....
 		request.get({url: url,json:true},
 					function (error, response, json) {			
@@ -65,12 +57,8 @@ app.post('/', function(req, res){
 					}
 		)
 			
-	}else{
-		
-	res.render('translator', {title:'ERROR: Введите текст для перевода'})};
-
+	}else{res.render('translator', {title:'ERROR: Введите текст для перевода'})};
 });
-
 
 app.listen(8080);
 console.log('Server started on port 8080');
